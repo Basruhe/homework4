@@ -6,6 +6,7 @@ const db = require("./db");
 app.get =
   ("/", (request, response) => response.send("response to request on 5432!"));
 
-app.listen(port, () => {
-  console.log(`Server has started, listening on: ${port}`);
-});
+app.listen(port),
+  () => {
+    console.log(`Server has started, listening on: ${port}`);
+  };
