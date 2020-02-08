@@ -1,19 +1,30 @@
 // assignment 1
-
 const express = require("express");
 const app = express();
 const port = 3000;
+const bodyParser = require("body-parser");
 
-// testing express server with httpie::
-// http :3000/messages
+// To test with httpie: http :3000/messages
 app.get("/messages", (request, response) =>
   response.send("hello from messages-api.js, endpoint /messages!")
 );
+
+// adding POST
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.post("/comments", (request, response, next) => {
+  console.log("request input received and parsed into the following:");
+  console.log(request.body);
+  response.json({
+    message: "Your POST request is received!"
+  });
+});
+
 app.listen(port, () =>
   console.log(`express server active, listening to port ${port} `)
 );
-
-//
 
 // 1. Create a new JS file named `messages-api.js`.
 // 1. Create an Express app in that file.
