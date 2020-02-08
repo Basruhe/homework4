@@ -1,5 +1,20 @@
 // assignment 1
+
+const express = require("express");
+const app = express();
+const port = 3000;
+
+// testing express server with httpie::
+// http :3000/messages
+app.get("/messages", (request, response) =>
+  response.send("hello from messages-api.js, endpoint /messages!")
+);
+app.listen(port, () =>
+  console.log(`express server active, listening to port ${port} `)
+);
+
 //
+
 // 1. Create a new JS file named `messages-api.js`.
 // 1. Create an Express app in that file.
 // The app should listen for requests on port `3000`.
